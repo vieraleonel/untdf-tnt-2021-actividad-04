@@ -6,9 +6,11 @@ class HeaderWithSearchBox extends StatelessWidget {
   const HeaderWithSearchBox({
     Key key,
     @required this.size,
+    @required this.callback,
   }) : super(key: key);
 
   final Size size;
+  final Function callback;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +70,9 @@ class HeaderWithSearchBox extends StatelessWidget {
                 children: <Widget>[
                   Expanded(
                     child: TextField(
-                      onChanged: (value) {},
+                      onChanged: (value) {
+                        this.callback(value);
+                      },
                       decoration: InputDecoration(
                         hintText: "Search",
                         hintStyle: TextStyle(

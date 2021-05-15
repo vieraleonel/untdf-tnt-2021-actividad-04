@@ -17,21 +17,40 @@ class PlantRepository {
       ),
       Plant(
         image: "assets/images/image_3.png",
-        title: "Samantha",
+        title: "Ortencia",
         country: "Russia",
         price: 440,
       ),
     ];
   }
 
-  Future<List<Plant>> getAllAsync() {
-    // Simulamos la petición a la API con una pequeña demora
-    return Future.delayed(Duration(seconds: 2), () => this.getAll());
+  List<Plant> getFiltered(titleSearch) {
+    return this
+        .getAll()
+        .where((plant) =>
+            plant.title.toLowerCase().contains(titleSearch.toLowerCase()))
+        .toList();
   }
 
-  Future<List<Plant>> getAllAsyncFaild() {
+  Future<List<Plant>> getAllAsync() {
+    // Simulamos la petición a la API con una pequeña demora
+    return Future.delayed(Duration(seconds: 4), () => this.getAll());
+  }
+
+  Future<List<Plant>> getFilteredAsync(titleSearch) {
+    // Simulamos la petición a la API con una pequeña demora
+    return Future.delayed(
+        Duration(seconds: 4),
+        () => this
+            .getAll()
+            .where((plant) =>
+                plant.title.toLowerCase().contains(titleSearch.toLowerCase()))
+            .toList());
+  }
+
+  Future<List<Plant>> getAllAsyncFailed() {
     // Simulamos la petición a la API con un error
-    return Future.delayed(Duration(seconds: 2),
+    return Future.delayed(Duration(seconds: 4),
         () => throw Exception('Error al obtener los datos'));
   }
 }

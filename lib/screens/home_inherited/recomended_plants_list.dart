@@ -4,18 +4,20 @@ import 'package:actividad_04/data/repositories/plant_reposotory.dart';
 import 'package:actividad_04/routes.dart';
 import 'package:flutter/material.dart';
 
-import 'package:actividad_04/screens/home/recomended_plants_card.dart';
+import 'package:actividad_04/screens/home_inherited/recomended_plants_card.dart';
 
 class RecomendedPlantsList extends StatelessWidget {
   const RecomendedPlantsList({
     Key key,
-    @required this.plants,
   }) : super(key: key);
-
-  final List<Plant> plants;
 
   @override
   Widget build(BuildContext context) {
+    String _valorTexto = "";
+    List<Plant> plants = (_valorTexto.length > 0)
+        ? PlantRepository().getFiltered(_valorTexto)
+        : PlantRepository().getAll();
+
     return Container(
       height: 304,
       child: ListView.builder(

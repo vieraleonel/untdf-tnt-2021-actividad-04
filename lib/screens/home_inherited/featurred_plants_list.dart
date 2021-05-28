@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:actividad_04/screens/home/featured_plant_card.dart';
+import 'package:actividad_04/screens/home_inherited/featured_plant_card.dart';
 
 class FeaturedPlantsList extends StatelessWidget {
   const FeaturedPlantsList({

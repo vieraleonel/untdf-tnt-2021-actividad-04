@@ -1,3 +1,4 @@
+import 'package:actividad_04/screens/home_inherited/home_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:actividad_04/constants.dart';
@@ -6,11 +7,9 @@ class HeaderWithSearchBox extends StatelessWidget {
   const HeaderWithSearchBox({
     Key key,
     @required this.size,
-    @required this.callback,
   }) : super(key: key);
 
   final Size size;
-  final Function callback;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +37,7 @@ class HeaderWithSearchBox extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  'Hi TNT 2021 UNTDF',
+                  'Hi TNT 2021 UNTDF - Inherited',
                   style: Theme.of(context).textTheme.headline5.copyWith(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
@@ -71,7 +70,7 @@ class HeaderWithSearchBox extends StatelessWidget {
                   Expanded(
                     child: TextField(
                       onChanged: (value) {
-                        this.callback(value);
+                        print(PlantsInfo.of(context).searchText);
                       },
                       decoration: InputDecoration(
                         hintText: "Search",
